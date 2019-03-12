@@ -9,6 +9,7 @@
  */
 #include "eden/fs/inodes/Differ.h"
 #include <folly/Synchronized.h>
+#include <folly/Utility.h>
 #include <folly/futures/Future.h>
 #include <folly/logging/xlog.h>
 #include "eden/fs/inodes/EdenMount.h"
@@ -87,7 +88,7 @@ char scmStatusCodeChar(ScmFileStatus code) {
   }
   throw std::runtime_error(folly::to<std::string>(
       "Unrecognized ScmFileStatus: ",
-      static_cast<typename std::underlying_type<ScmFileStatus>::type>(code)));
+      folly::to_underlying_type(code)));
 }
 
 std::ostream& operator<<(std::ostream& os, const ScmStatus& status) {
