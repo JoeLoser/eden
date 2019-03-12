@@ -390,7 +390,7 @@ def install_platform_deps():
             ]
         )
     else:
-        # TODO: Handle distributions other than Ubuntu.
+        # TODO: Handle distributions other than Ubuntu or Darwin
         raise Exception(
             "installing OS dependencies on %s is not supported yet" % (os_name,)
         )
