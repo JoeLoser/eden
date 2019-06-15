@@ -118,11 +118,6 @@ def fixup_env_for_darwin(env):
     add_flag("PATH", "/usr/local/opt/bison/bin", ":", append=False)
     add_flag("PATH", "/usr/local/opt/flex/bin", ":", append=False)
 
-    # flex generates code that sprinkles the `register` keyword liberally
-    # and the thrift compilation flags hate that in C++17 code.  Disable
-    # the warning that promotes this to an error.
-    add_flag("CXXFLAGS", "-Wno-register", " ")
-
 
 class BuilderBase(object):
     def __init__(self, subdir=None, env=None, build_dir=None):
